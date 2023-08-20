@@ -1,0 +1,65 @@
+﻿@model Luyentap3.Models.Sanpham
+
+@{
+    ViewBag.Title = "Sản phẩm";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenvd)Tên vật dụng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenvd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenAnh)
+        </dd>
+
+        @{ 
+            string imgPath = "~/Images/" + Model.Mota;
+        }
+
+        <dd>
+            <img src="@Url.Content(imgPath)" width="110" class="img-thumbnail" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giatien)Giá tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giatien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDanhmuc)Danh mục
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Danhmuc.TenDanhmuc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Mavd }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

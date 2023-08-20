@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Luyentap3.Models.Sanpham>
+@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+@using(Html.BeginForm())
+            {
+                <p>
+                    Search by: 
+                    <input type="radio" name="searchType" value="pname" />Tên &nbsp;&nbsp;
+                    <input type="radio" name="searchType" value="price" />Nhỏ hơn giá <br />
+                    Tìm mặt hàng: @Html.TextBox("searchString")<br />
+                    <input type="submit" value="Tìm" />
+                </p>
+            }
+
+<p>
+    @Html.ActionLink("Thêm mới sản phẩm", "Create")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-sm-6 col-md-4 col-lg-3 table-bordered text-center">
+        Tên danh mục: <b>@Html.DisplayFor(modelItem => item.Danhmuc.TenDanhmuc)<br /></b>
+        Tên vật dụng: <b>@Html.DisplayFor(modelItem => item.Tenvd)<br /></b>
+        Mô tả: <b>@Html.DisplayFor(modelItem => item.TenAnh)<br /></b>
+        @{
+            string imgPath = "~/Images/" + item.Mota;
+        }
+        <img src="@Url.Content(imgPath)" width="110" class="img-thumbnail" />
+        <br />
+        Giá: <b>@Html.DisplayFor(modelItem => item.Giatien)<br /></b>
+        Số lượng: <b>@Html.DisplayFor(modelItem => item.Soluong)<br /></b>
+
+        @Html.ActionLink("Sửa", "Edit", new { id = item.Mavd })|
+        @Html.ActionLink("Chi tiết", "Detail", new { id = item.Mavd })|
+        @Html.ActionLink("Xóa", "Delete", new { id = item.Mavd })
+
+
+    </div>
+    }
+</div>
